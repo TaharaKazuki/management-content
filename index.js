@@ -1,14 +1,20 @@
 import express from 'express'
 import fs from 'fs'
 import path from 'path'
+import cors from 'cors'
 const pathToFile = path.resolve('./data.json')
 
 const getResources = () => JSON.parse(fs.readFileSync(pathToFile))
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
+}
 
 const app = express()
 const PORT = 3001
 
 app.use(express.json())
+app.use(cors(corsOptions))
 
 app.get('/', (_req, res) => {
   res.send('Hello world')
