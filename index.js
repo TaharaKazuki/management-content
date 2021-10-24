@@ -14,6 +14,11 @@ app.get('/', (_req, res) => {
   res.send('Hello world')
 })
 
+app.get('/api/resources/', (_req, res) => {
+  const resources = getResources()
+  res.send(resources)
+})
+
 app.get('/api/resources/:id', (req, res) => {
   const resources = getResources()
   const { id } = req.params
