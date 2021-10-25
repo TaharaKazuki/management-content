@@ -73,7 +73,7 @@ app.get('/api/activeresource', (req, res) => {
   res.send(activeResource)
 })
 
-app.post('/api/resorces', (req, res) => {
+app.post('/api/resources', (req, res) => {
   const resources = getResources()
   const resource = req.body
 
