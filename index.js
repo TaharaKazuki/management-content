@@ -39,17 +39,21 @@ app.patch('/api/resources/:id', (req, res) => {
   const activeResource = resources.find(
     (resource) => resource.status === 'active'
   )
-
+  // console.info('通過1')
   resources[index] = req.body
-
+  // console.info('通過2')
   if (req.body.status === 'active') {
+    // console.info('通過3')
     if (activeResource) {
+      // console.info('通過4')
       return res.status(422).send('There is active resource already')
     }
-
+    // console.info('通過5')
     resources[index].status = 'active'
     resources[index].activationTime = new Date()
   }
+
+  // console.info('通過6')
 
   fs.writeFile(pathToFile, JSON.stringify(resources, null, 2), (error) => {
     if (error) {
